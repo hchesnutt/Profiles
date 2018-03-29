@@ -120,18 +120,10 @@ alias NotesPush='cd ~/Documents/Hacking/notes; git add .; git commit -m "save mo
 alias gl='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
 alias HR='cd ~/Documents/Hacking/hrsf93'
 
-mkcd () {
+function mkcd () {
     mkdir $1; cd $1;	
 }
 
-gclone () {
-    git clone $1;
-}
-
-calc () {
+function calc () {
     bc -l <<< "$@"
-}
-
-NotesNew () {
-    cd ~/Documents/Hacking/notes; cp template.js $1.js; atom $1.js;
 }
