@@ -8,8 +8,8 @@ export ZSH=/Users/henrychesnutt/.oh-my-zsh
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ##ZSH_THEME="fino"
-ZSH_THEME="agnoster"
-##ZSH_THEME="powerlevel9k/powerlevel9k"
+##ZSH_THEME="agnoster"
+ZSH_THEME="powerlevel9k/powerlevel9k"
 
 ## Custom configs for powerlevel9k
 POWERLEVEL9K_MODE="nerdfont-complete"
@@ -28,7 +28,7 @@ POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%F{249}%}\u2517%{%F{default}%} "
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
@@ -108,11 +108,30 @@ source $ZSH/oh-my-zsh.sh
 alias c='clear'
 alias S='source ~/.zshrc'
 alias B='nano ~/.zshrc'
-alias gits='git status'
-alias gita='git add .'
+alias gs='git status'
+alias ga='git add .'
 alias nwspy='dns-sd -B _ssh._tcp'
 alias Hack='cd ~/Documents/Hacking'
 alias rm='rm -i'
 alias mv='mv -i'
 alias Docs='cd ~/Documents'
-alias Notes='cd ~/Documents/Hacking/notes; atom .'
+alias Notes='cd ~/Documents/Hacking/notes;'
+alias NotesPush='cd ~/Documents/Hacking/notes; git add .; git commit -m "save most recent copy of notes"; git push; git status;'
+alias gl='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
+alias HR='cd ~/Documents/Hacking/hrsf93'
+
+mkcd () {
+    mkdir $1; cd $1;	
+}
+
+gclone () {
+    git clone $1;
+}
+
+calc () {
+    bc -l <<< "$@"
+}
+
+NotesNew () {
+    cd ~/Documents/Hacking/notes; cp template.js $1.js; atom $1.js;
+}
