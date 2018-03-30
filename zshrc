@@ -8,7 +8,7 @@ export ZSH=/Users/henrychesnutt/.oh-my-zsh
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ##ZSH_THEME="fino"
-##ZSH_THEME="agnoster"
+# ZSH_THEME="agnoster"
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
 ## Custom configs for powerlevel9k
@@ -104,26 +104,41 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+#----------------------------------------------
 ## My Aliases
-alias c='clear'
+#----------------------------------------------
+
+## Editing
+alias B='code ~/.zshrc'
 alias S='source ~/.zshrc'
-alias B='nano ~/.zshrc'
+alias Profiles='cd ~/Documents/Profiles'
+alias ProfilesBACKUP='git add .; git commit -m "New Changes";'
+
+## Git Shortcuts
 alias gs='git status'
 alias ga='git add .'
-alias nwspy='dns-sd -B _ssh._tcp'
+alias gl='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
+
+## Common Locations
+alias HR='cd ~/Documents/Hacking/hrsf93'
 alias Hack='cd ~/Documents/Hacking'
+alias Docs='cd ~/Documents'
+
+## Safety
 alias rm='rm -i'
 alias mv='mv -i'
-alias Docs='cd ~/Documents'
-alias Notes='cd ~/Documents/Hacking/notes;'
-alias NotesPush='cd ~/Documents/Hacking/notes; git add .; git commit -m "save most recent copy of notes"; git push; git status;'
-alias gl='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
-alias HR='cd ~/Documents/Hacking/hrsf93'
 
-function mkcd () {
+## Other
+alias nwspy='dns-sd -B _ssh._tcp'
+alias Notes='cd ~/Documents/Hacking/notes;'
+alias NotesPush='cd ~/Documents/Hacking/notes; git add .; git commit -m "
+  save most recent copy of notes"; git push; git status;'
+alias bitcoinexample='cd ~/Documents/Presentations/bitcoin-example;'
+
+mkcd () {
     mkdir $1; cd $1;	
 }
 
-function calc () {
-    bc -l <<< "$@"
+NotesNew () {
+    cd ~/Documents/Hacking/notes; cp template.js $(echo $1.js); atom $(echo $1.js);
 }
